@@ -1,0 +1,6 @@
+{
+  "name": "Pine & Proper",
+  "description": "Website for Pine & Proper, a Peruvian natural cleaning products brand.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
