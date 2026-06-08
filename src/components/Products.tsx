@@ -1,3 +1,5 @@
+import { useCart } from '../context/CartContext';
+
 const products = [
   {
     id: 3,
@@ -41,6 +43,8 @@ const products = [
 ];
 
 export default function Products() {
+  const { addItem } = useCart();
+
   return (
     <section id="products" className="py-24 bg-brand-cream">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -84,7 +88,10 @@ export default function Products() {
                 <p className="text-sm text-brand-green/60 mb-3">{product.scent}</p>
                 <div className="flex items-center justify-between">
                   <span className="font-medium text-brand-green">{product.price}</span>
-                  <button className="text-sm font-medium text-brand-gold hover:text-brand-green transition-colors">
+                  <button 
+                    onClick={() => addItem(product)}
+                    className="text-sm font-medium text-brand-gold hover:text-brand-green transition-colors"
+                  >
                     + Añadir
                   </button>
                 </div>

@@ -11,6 +11,8 @@ import Nosotros from './pages/Nosotros';
 import ProductosPage from './pages/ProductosPage';
 import Impact from './pages/Impact';
 import Footer from './components/Footer';
+import { CartProvider } from './context/CartContext';
+import CartDrawer from './components/CartDrawer';
 
 export default function App() {
   const { pathname, hash, key } = useLocation();
@@ -30,17 +32,20 @@ export default function App() {
   }, [pathname, hash, key]);
 
   return (
-    <div className="font-sans text-brand-green selection:bg-brand-gold/30 selection:text-brand-green flex flex-col min-h-screen">
-      <Navbar />
-      <div className="flex-1">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/nosotros" element={<Nosotros />} />
-          <Route path="/productos" element={<ProductosPage />} />
-          <Route path="/impacto" element={<Impact />} />
-        </Routes>
+    <CartProvider>
+      <div className="font-sans text-brand-green selection:bg-brand-gold/30 selection:text-brand-green flex flex-col min-h-screen">
+        <Navbar />
+        <CartDrawer />
+        <div className="flex-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/nosotros" element={<Nosotros />} />
+            <Route path="/productos" element={<ProductosPage />} />
+            <Route path="/impacto" element={<Impact />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </CartProvider>
   );
 }
